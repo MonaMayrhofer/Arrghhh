@@ -1,7 +1,9 @@
 use std::io::Read;
 
+use crate::cheats::*;
+
 #[derive(Debug, PartialEq)]
-struct Mem {
+pub struct Mem {
     num: [i32; 1024],
     ptr: usize,
 }
@@ -15,19 +17,11 @@ impl Default for Mem {
     }
 }
 
-pub type Add = (());
-pub type Sub = ((), ());
-pub type PLeft = ((), (), ());
-pub type PRight = ((), (), (), ());
-pub type Print = ((), (), (), (), ());
-pub type Loop = ((), (), (), (), (), ());
-pub type ReadCmd = ((), (), (), (), (), (), ());
-
 pub trait Aaargh {
     fn get(mem: Mem) -> Mem;
 }
 
-trait Counter {
+pub trait Counter {
     fn count() -> i32;
 }
 
@@ -165,171 +159,8 @@ where
     }
 }
 
-//HELLO WORLD
-//72 69 76 76 79 32 87 79 82 76 68
-//-3           -55
-
-pub type HelloWorld<T> = (
-    (
-        (
-            (
-                (
-                    (
-                        (
-                            (
-                                (
-                                    (
-                                        (
-                                            (
-                                                (
-                                                    (
-                                                        (
-                                                            (
-                                                                (
-                                                                    (
-                                                                        (
-                                                                            (
-                                                                                (
-                                                                                    (
-                                                                                        (
-                                                                                            (
-                                                                                                T,
-                                                                                                Add,
-                                                                                                (
-                                                                                                    (
-                                                                                                    ),
-                                                                                                    (
-                                                                                                        (
-                                                                                                            (
-                                                                                                            ),
-                                                                                                            (
-                                                                                                            ),
-                                                                                                        ),
-                                                                                                        (
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                    (
-                                                                                                        (
-                                                                                                            (
-                                                                                                                (
-                                                                                                                    (
-                                                                                                                    ),
-                                                                                                                    (
-                                                                                                                    ),
-                                                                                                                ),
-                                                                                                                (
-                                                                                                                ),
-                                                                                                            ),
-                                                                                                            (
-                                                                                                            ),
-                                                                                                        ),
-                                                                                                        (
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                ),
-                                                                                            ),
-                                                                                            Print,
-                                                                                        ),
-                                                                                        Sub,
-                                                                                        (
-                                                                                            (
-                                                                                                (
-                                                                                                    (
-                                                                                                    ),
-                                                                                                    (
-                                                                                                    ),
-                                                                                                ),
-                                                                                                (),
-                                                                                            ),
-                                                                                            (),
-                                                                                        ),
-                                                                                    ),
-                                                                                    Print,
-                                                                                ),
-                                                                                Add,
-                                                                                (
-                                                                                    (
-                                                                                        (
-                                                                                            (
-                                                                                                (),
-                                                                                                (),
-                                                                                            ),
-                                                                                            (),
-                                                                                        ),
-                                                                                        (),
-                                                                                    ),
-                                                                                    ((), ()),
-                                                                                    (),
-                                                                                ),
-                                                                            ),
-                                                                            Print,
-                                                                        ),
-                                                                        Print,
-                                                                    ),
-                                                                    Add,
-                                                                    (((((), ()), ()), ()), (), ()),
-                                                                ),
-                                                                Print,
-                                                            ),
-                                                            Sub,
-                                                            (
-                                                                ((((), ()), ()), ()),
-                                                                ((((), ()), ()), ()),
-                                                                (((), ()), ()),
-                                                            ),
-                                                        ),
-                                                        Print,
-                                                    ),
-                                                    Add,
-                                                    (
-                                                        ((((), ()), ()), ()),
-                                                        ((), ()),
-                                                        ((((), ()), ()), ()),
-                                                    ),
-                                                ),
-                                                Print,
-                                            ),
-                                            Sub,
-                                            ((), (((), ()), ()), ()),
-                                        ),
-                                        Print,
-                                    ),
-                                    Add,
-                                    (((((), ()), ()), ()), (), ()),
-                                ),
-                                Print,
-                            ),
-                            Sub,
-                            ((((), ()), ()), ((), ()), ()),
-                        ),
-                        Print,
-                    ),
-                    Sub,
-                    ((), (((), ()), ()), ()),
-                ),
-                Print,
-            ),
-            Sub,
-            ((((), ()), ()), (((), ()), ()), ((((), ()), ()), ())),
-        ),
-        Print,
-    ),
-    Sub,
-    ((((), ()), ()), (((), ()), ()), ()),
-);
-
-pub type ReadIntCmd<T> = (((T, ReadCmd), Sub, ((), (), ((((), ()), ()), ()))), Print);
-
-pub type HelloWorldNTimes = (
-    ReadIntCmd<((), PRight)>,
-    Loop,
-    (
-        ((HelloWorld<((), PLeft)>, PRight), Sub, (((), ()), (), ())),
-        Print,
-    ),
-);
-
 pub trait Arghh: Aaargh {
+    #[allow(non_snake_case)]
     fn O() {
         Self::get(Mem::default());
     }
